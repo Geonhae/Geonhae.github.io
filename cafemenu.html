@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카페 메뉴 계산기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>카페 메뉴 계산기</h1>
+        <div id="menu">
+            <div class="item">
+                <span>아메리카노 (2500원)</span>
+                <span><input type="number" id="americano" value="0" min="0"></span>
+            </div>
+            <div class="item">
+                <span>라떼 (3000원)</span>
+                <span><input type="number" id="latte" value="0" min="0"></span>
+            </div>
+            <div class="item">
+                <span>카푸치노 (3500원)</span>
+                <span><input type="number" id="cappuccino" value="0" min="0"></span>
+            </div>
+            <div class="item">
+                <span>에스프레소 (1200원)</span>
+                <span><input type="number" id="espresso" value="0" min="0"></span>
+            </div>
+        </div>
+        <button onclick="calculateTotal()">총 금액 계산하기</button>
+        <div class="total" id="total">총 금액: 0원</div>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            const americanoCount = document.getElementById('americano').value || 0;
+            const latteCount = document.getElementById('latte').value || 0;
+            const cappuccinoCount = document.getElementById('cappuccino').value || 0;
+            const espressoCount = document.getElementById('espresso').value || 0;
+
+            const americanoPrice = 2500;
+            const lattePrice = 3000;
+            const cappuccinoPrice = 3500;
+            const espressoPrice = 1200;
+
+            const total = (americanoCount * americanoPrice) + 
+                          (latteCount * lattePrice) + 
+                          (cappuccinoCount * cappuccinoPrice) + 
+                          (espressoCount * espressoPrice);
+
+            document.getElementById('total').innerText = `총 금액: ${total}원`;
+        }
+    </script>
+</body>
+</html>
